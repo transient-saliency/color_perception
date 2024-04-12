@@ -1,6 +1,6 @@
 # Color Perception
 ## Data Structure
-```json
+```
 {
     info: { // 基础信息
         code: 编号,
@@ -38,7 +38,7 @@
 ```
 
 ## Pattern Type
-```json
+```
 backgroundColor: ['#FF0017', '#0091FF', '#E3E3DB', '#FF00E3', '#00A88A', '#52A23B', '#B58B00', '#93908F'] // 背景颜色
 fontColor: ['#FFFFFF', '#FFFFFF', '#93908F', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'] // 字体颜色
 lineHeight: [1.5, 2, 2.5] // 行高
