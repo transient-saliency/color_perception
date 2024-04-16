@@ -2,10 +2,11 @@
  * @Description: 
  * @Author: Qing Shi
  * @Date: 2022-09-17 23:36:36
- * @LastEditTime: 2024-04-16 10:21:30
+ * @LastEditTime: 2024-04-16 17:42:23
 -->
 <template>
-    <div class="common-layout" :style="{width: '100%', height: '100vh', backgroundColor: isRelax ? ' #797775' : '#ffffff'}" v-loading="!initSign" :element-loading-text="loadingText" element-loading-background="rgba(0, 0, 0, 0.8)">
+    <div class="common-layout" :style="{width: '100%', height: '100vh', backgroundColor: isRelax ? ' #797775' : '#ffffff'}" v-loading="!initSign" :element-loading-text="loadingText" element-loading-background="rgba(0, 0, 0, 0.8)" @keyup.space="nextRound()"
+        tabindex="0">
         <!-- @click.right="nextRoundClick()" -->
         <!-- <Main :msgH="msgH"/> -->
         <div style="height: 100%; width: 100%; margin-top: 0px;">
@@ -19,10 +20,10 @@
                 </div>
             </div>
         </div>
-        <div style="position: absolute; right: 10px; bottom: 20px;">
-            <el-button v-if="!isRelax" @click="nextRound()" :color="'#797775'"><span v-if="patternCnt < 3">下一轮</span><span v-else>结束训练</span></el-button>
-            <!-- <el-button v-else @click="skipRelax()" :color="'#797775'">跳过休息</el-button> -->
-        </div>
+        <!-- <div style="position: absolute; right: 10px; bottom: 20px;">
+                <el-button v-if="!isRelax" @click="nextRound()" :color="'#797775'"><span v-if="patternCnt < 3">下一轮</span><span v-else>结束训练</span></el-button>
+                <el-button v-else @click="skipRelax()" :color="'#797775'">跳过休息</el-button>
+            </div> -->
     </div>
 </template>
 
@@ -57,16 +58,19 @@ export default {
     },
     methods: {
         nextRound() {
-            this.patternCnt++;
+            // console.log(1)
+            if (this.isRelax == false) {
+                this.patternCnt++;
                 if (this.patternCnt != 4)
-            this.isRelax = !this.isRelax;
-            this.timeCountDown();
+                    this.isRelax = !this.isRelax;
+                this.timeCountDown();
+            }
         },
         nextRoundClick() {
             if (!this.isRelax) {
                 this.patternCnt++;
                 if (this.patternCnt != 4)
-                this.isRelax = !this.isRelax;
+                    this.isRelax = !this.isRelax;
                 this.timeCountDown();
             } else {
                 this.isRelax = !this.isRelax;

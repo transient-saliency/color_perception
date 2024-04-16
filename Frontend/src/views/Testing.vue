@@ -2,10 +2,11 @@
  * @Description: 
  * @Author: Qing Shi
  * @Date: 2022-09-17 23:36:36
- * @LastEditTime: 2024-04-16 10:17:26
+ * @LastEditTime: 2024-04-16 17:42:38
 -->
 <template>
-    <div class="common-layout" :style="{width: '100%', height: '100vh', backgroundColor: isRelax ? ' #797775' : selectBackgroundColor }" v-loading="!initSign" :element-loading-text="loadingText" element-loading-background="rgba(0, 0, 0, 0.8)" >
+    <div class="common-layout" :style="{width: '100%', height: '100vh', backgroundColor: isRelax ? ' #797775' : selectBackgroundColor }" v-loading="!initSign" :element-loading-text="loadingText" element-loading-background="rgba(0, 0, 0, 0.8)" @keyup.space="nextRound()"
+        tabindex="0">
         <!-- <Main :msgH="msgH"/> -->
         <!-- @click.right="nextRoundClick()" -->
     
@@ -20,11 +21,11 @@
                 </div>
             </div>
         </div>
-        <div style="position: absolute; right: 10px; bottom: 20px;">
-            <el-button v-if="!isRelax && patternCnt < 75" @click="nextRound()" :color="'#797775'">下一轮</el-button>
-            <!-- <el-button v-if="isRelax && patternCnt <= 75" @click="skipRelax()" :color="'#797775'">跳过休息</el-button> -->
-            <el-button v-if="!isRelax && patternCnt == 75" @click="nextRound()" :color="'#797775'">结束实验</el-button>
-        </div>
+        <!-- <div style="position: absolute; right: 10px; bottom: 20px;">
+                <el-button v-if="!isRelax && patternCnt < 75" @click="nextRound()" :color="'#797775'">下一轮</el-button>
+                <el-button v-if="isRelax && patternCnt <= 75" @click="skipRelax()" :color="'#797775'">跳过休息</el-button>
+                <el-button v-if="!isRelax && patternCnt == 75" @click="nextRound()" :color="'#797775'">结束实验</el-button>
+            </div> -->
     </div>
 </template>
 
@@ -132,16 +133,18 @@ export default {
             console.log(dataStore.allData);
         },
         nextRound() {
-            this.roundSave(this.pattern[this.patternCnt]);
-            this.patternCnt++;
-            // if (this.patternCnt != 4)
-            if (this.patternCnt != 76) {
-                this.isRelax = !this.isRelax;
+            if (this.isRelax == false) {
+                this.roundSave(this.pattern[this.patternCnt]);
+                this.patternCnt++;
+                // if (this.patternCnt != 4)
+                if (this.patternCnt != 76) {
+                    this.isRelax = !this.isRelax;
+                }
+                if (this.patternCnt == 76) {
+                    this.saveData();
+                }
+                this.timeCountDown();
             }
-            if (this.patternCnt == 76) {
-                this.saveData();
-            }
-            this.timeCountDown();
         },
         nextRoundClick() {
             if (!this.isRelax) {
