@@ -42,7 +42,7 @@ export default {
             msgH: null,
             pattern: [],
             patternCnt: 0,
-            timeCnt: 20,
+            timeCnt: 15,
             timeNote: 0,
             isRelax: true,
             timer: null,

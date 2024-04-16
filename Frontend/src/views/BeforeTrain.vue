@@ -16,7 +16,7 @@
                 There are some targets in each text paragraph. Please try to quickly and accurately find the targets and left-click on them to mark them. Successfully marked targets will be bolded. <br> 每个文本段落中均存在一些特定目标，请您尽可能快速、准确的寻找目标，并左键单击目标进行标记。被成功标记的目标会加粗显示。
             </div>
             <div style="width: 100%; margin-top: 20px;text-align: left;">
-                After you have read the entire text, please click "Next Round" for a 30-second break. After 30 seconds, the next text paragraph will be presented automatically. Please repeat the above task process until you have read all the paragraphs. <br> 当您阅读完整个文本后，请单击“下一轮”按钮，进行30s休息。30s后，自动呈现下一个文本段落，请重复以上任务流程，直至阅读完所有段落。
+                After you have finished retrieving the last line, please immediately press the space bar on the keyboard for a 3-second break. After 3 seconds, the next text paragraph will be automatically presented. Please repeat the above task process until you have read all the paragraphs. <br> 当您检索完最后一行后，请立即敲击键盘上的空格键，以进行3s休息。3s后自动呈现下一个文本段落，请重复以上任务流程，直至阅读完所有段落。
             </div>
             <div style="margin-top: 50px;">
                 <el-button @click="jumpTo()">开始练习</el-button>
